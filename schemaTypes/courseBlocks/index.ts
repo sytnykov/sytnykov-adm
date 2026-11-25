@@ -342,6 +342,13 @@ export const courseVideoBlock = defineType({
     title(),
     defineField({name: 'videoUrl', title: 'Посилання YouTube', type: 'url', validation: (r) => r.required()}),
     defineField({name: 'caption', title: 'Підпис', type: 'localizedText'}),
+    defineField({
+      name: 'uploadDate',
+      title: 'Дата публікації відео на YouTube',
+      description: 'Потрібна Google для мікророзмітки відео (дата під відео на YouTube).',
+      type: 'date',
+      validation: (r) => r.warning().required(),
+    }),
   ],
   preview: ukTitle('title.uk', '+ Відео'),
 })
