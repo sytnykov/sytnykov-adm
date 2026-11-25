@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {slugify} from './slugify'
 
 export default defineType({
   name: 'post',
@@ -42,7 +43,10 @@ export default defineType({
       options: {
         source: (doc) => doc.title?.uk,
         maxLength: 96,
+        slugify,
       },
+      description: 'Адреса статті латиницею. Натисніть «Generate» — вона створиться з української назви.',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',

@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {slugify} from './slugify'
 
 export default defineType({
   name: 'courseType',
@@ -16,8 +17,9 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: (doc) => doc.title?.ru,
+        source: (doc) => doc.title?.uk || doc.title?.ru,
         maxLength: 96,
+        slugify,
       },
       validation: (rule) => rule.required(),
     }),
