@@ -29,6 +29,14 @@ export default defineType({
     defineField({name: 'course', title: 'Курс', type: 'string', readOnly: true}),
     defineField({name: 'message', title: 'Повідомлення', type: 'text', readOnly: true}),
     defineField({name: 'page', title: 'Сторінка', type: 'string', readOnly: true}),
+    defineField({
+      name: 'attribution',
+      title: 'Джерело та візит',
+      description: 'Канал, перший візит, сторінки, пристрій: заповнює сайт.',
+      type: 'text',
+      rows: 4,
+      readOnly: true,
+    }),
     defineField({name: 'note', title: 'Нотатка менеджера', type: 'text'}),
   ],
   orderings: [
