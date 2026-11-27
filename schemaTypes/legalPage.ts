@@ -5,6 +5,7 @@ const DOCS = [
   {title: 'Публічна оферта', value: 'public-offer'},
   {title: 'Договір про надання цифрового контенту', value: 'digital-content-agreement'},
   {title: 'Умови повернення коштів', value: 'refund-policy'},
+  {title: 'Умови використання', value: 'terms-of-use'},
 ]
 
 /** Legal documents linked from the site footer (/uk/legal/<slug>). */
