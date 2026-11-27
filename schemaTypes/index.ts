@@ -7,6 +7,12 @@ import courseType from './courseType'
 import gallery from './gallery'
 import accordionItem from './accordionItem'
 import announcement from './announcement'
+import legalPage from './legalPage'
+import application from './application'
+import localizedText from './localizedText'
+import trainer from './trainer'
+import programScheme from './programScheme'
+import {COURSE_BLOCKS} from './courseBlocks'
 
 export const schemaTypes = [
   post,
@@ -18,4 +24,10 @@ export const schemaTypes = [
   gallery,
   accordionItem,
   announcement,
+  legalPage,
+  application,
+  localizedText,
+  trainer,
+  programScheme,
+  ...COURSE_BLOCKS,
 ]
