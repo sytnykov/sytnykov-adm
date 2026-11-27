@@ -13,6 +13,8 @@ import localizedText from './localizedText'
 import trainer from './trainer'
 import programScheme from './programScheme'
 import thanksLetter from './thanksLetter'
+import siteSettings from './siteSettings'
+import {programNodes, programTree} from './programTree'
 import {COURSE_BLOCKS} from './courseBlocks'
 
 export const schemaTypes = [
@@ -31,5 +33,8 @@ export const schemaTypes = [
   trainer,
   programScheme,
   thanksLetter,
+  siteSettings,
+  programTree,
+  ...programNodes,
   ...COURSE_BLOCKS,
 ]

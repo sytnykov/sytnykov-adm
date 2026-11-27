@@ -383,6 +383,61 @@ export const courseGalleryBlock = defineType({
   preview: ukTitle('title.uk', '+ Фотогалерея'),
 })
 
+export const coursePainsBlock = defineType({
+  name: 'coursePainsBlock',
+  title: '+ Болі та страхи / заперечення',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Заголовок блоку',
+      type: 'localizedString',
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: 'items',
+      title: 'Пункти (болі, страхи, заперечення аудиторії)',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'pain',
+          fields: [
+            defineField({name: 'title', title: 'Біль / заперечення', type: 'localizedString', validation: (r) => r.required()}),
+            defineField({name: 'text', title: 'Відповідь курсу (необов’язково)', type: 'localizedText'}),
+          ],
+          preview: {select: {title: 'title.uk'}},
+        }),
+      ],
+      validation: (r) => r.min(1),
+    }),
+  ],
+  preview: ukTitle('title.uk', '+ Болі та страхи'),
+})
+
+export const courseProgramTreeBlock = defineType({
+  name: 'courseProgramTreeBlock',
+  title: '+ Ієрархічна програма',
+  type: 'object',
+  description:
+    'Дерево програми (тиждень → модуль → секція → сегмент → нюанс). Саму програму створіть у розділі «Ієрархічні програми» і оберіть тут. Поки програма не опублікована, блок на сайті не показується.',
+  fields: [
+    title(),
+    defineField({
+      name: 'program',
+      title: 'Програма',
+      type: 'reference',
+      to: [{type: 'programTree'}],
+      weak: true,
+      validation: (r) => r.required(),
+    }),
+  ],
+  preview: {
+    select: {t: 'title.uk', p: 'program.title.uk'},
+    prepare: ({t, p}: {t?: string; p?: string}) => ({title: '+ Ієрархічна програма', subtitle: t || p || ''}),
+  },
+})
+
 export const COURSE_BLOCKS = [
   courseHeroBlock,
   courseResultsBlock,
@@ -397,4 +452,6 @@ export const COURSE_BLOCKS = [
   courseVideoBlock,
   courseTextImageBlock,
   courseGalleryBlock,
+  coursePainsBlock,
+  courseProgramTreeBlock,
 ]
